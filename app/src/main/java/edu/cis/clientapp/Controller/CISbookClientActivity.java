@@ -20,13 +20,17 @@ import edu.cis.clientapp.Model.Request;
 import edu.cis.clientapp.Model.SimpleClient;
 import edu.cis.clientapp.R;
 
-public class CISbookClientActivity extends AppCompatActivity {
-    /** The address of the server that should be contacted when sending
-     * any Requests. */
+public class CISbookClientActivity extends AppCompatActivity
+{
+    /**
+     * The address of the server that should be contacted when sending
+     * any Requests.
+     */
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -36,9 +40,11 @@ public class CISbookClientActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -50,34 +56,39 @@ public class CISbookClientActivity extends AppCompatActivity {
 
     private void pingTheServer()
     {
-        try {
+        try
+        {
             // Lets prepare ourselves a new request with command "ping".
             Request example = new Request("ping");
             // We are ready to send our request
             String result = SimpleClient.makeRequest(Constants.HOST, example);
             System.out.println("ping!");
             System.out.println(("result is: " + result));
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             System.out.println(e.getMessage());
         }
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_settings)
+        {
             return true;
         }
 

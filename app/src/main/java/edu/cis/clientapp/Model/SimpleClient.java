@@ -10,33 +10,44 @@ import edu.cis.clientapp.Model.IOUtils;
 import edu.cis.clientapp.Model.Request;
 
 
-public class SimpleClient {
+public class SimpleClient
+{
     public static final String ERROR_KEY = "Error:";
 
-    private SimpleClient() {
+    private SimpleClient()
+    {
     }
 
-    public static String makeRequest(String host, Request request) throws IOException {
-        if (!host.endsWith("/")) {
+    public static String makeRequest(String host, Request request) throws IOException
+    {
+        if (!host.endsWith("/"))
+        {
             host = host + "/";
         }
 
-        if (request == null) {
+        if (request == null)
+        {
             throw new NullPointerException("null request passed");
-        } else {
-            try {
+        } else
+        {
+            try
+            {
                 URL destination = new URL(host + request.toGetRequest());
-                HttpURLConnection conn = (HttpURLConnection)destination.openConnection();
+                HttpURLConnection conn = (HttpURLConnection) destination.openConnection();
                 conn.setRequestMethod("GET");
                 String response = IOUtils.readEntireStream(conn.getInputStream());
-                if (response.startsWith("Error:")) {
+                if (response.startsWith("Error:"))
+                {
                     throw new IOException(response);
-                } else {
+                } else
+                {
                     return response;
                 }
-            } catch (ConnectException var5) {
+            } catch (ConnectException excp)
+            {
                 throw new IOException("Unable to connect to the server. Did you start it?");
-            } catch (MalformedURLException var6) {
+            } catch (MalformedURLException excp)
+            {
                 throw new IllegalArgumentException("Invalid URL: " + host + request.toGetRequest());
             }
         }

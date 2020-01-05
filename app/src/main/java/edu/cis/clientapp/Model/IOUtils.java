@@ -7,15 +7,20 @@ import java.io.InputStreamReader;
 
 import edu.cis.clientapp.Model.IORuntimeException;
 
-public class IOUtils {
+public class IOUtils
+{
 
-    public static String readEntireStream(InputStream stream) {
-        try {
+    public static String readEntireStream(InputStream stream)
+    {
+        try
+        {
             BufferedReader breader = new BufferedReader(new InputStreamReader(stream));
             StringBuilder text = new StringBuilder();
-            while (true) {
+            while (true)
+            {
                 int b = breader.read();
-                if (b < 0) {
+                if (b < 0)
+                {
                     break;
                 }
                 text.append((char) b);
@@ -23,7 +28,8 @@ public class IOUtils {
             breader.close();
             stream.close();
             return text.toString();
-        } catch (IOException ioe) {
+        } catch (IOException ioe)
+        {
             throw new IORuntimeException(ioe);
         }
     }
