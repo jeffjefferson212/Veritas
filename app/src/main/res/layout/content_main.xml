@@ -9,21 +9,20 @@
     tools:layout_editor_absoluteY="56dp"
     tools:showIn="@layout/activity_main">
 
-    <addButton
+
+    <Button
         android:id="@+id/addButton"
         android:layout_width="109dp"
         android:layout_height="95dp"
-        android:layout_marginStart="299dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="528dp"
+        android:layout_marginStart="289dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="300dp"
         android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -33,7 +32,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="176dp"
         android:layout_marginBottom="640dp"
-        android:text="TextView"
+        android:text="Account Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,8 +40,8 @@
 
     <EditText
         android:id="@+id/textInput"
-        android:layout_width="250dp"
-        android:layout_height="96dp"
+        android:layout_width="200dp"
+        android:layout_height="78dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="133dp"
@@ -52,8 +51,119 @@
         android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666" />
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="108dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="289dp"
+        android:layout_marginTop="405dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="170dp"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/lookUpButton"
+        android:layout_width="64dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="343dp"
+        android:layout_marginBottom="530dp"
+        android:text="Look Up"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/accountsButton"
+        android:layout_width="68dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="354dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="623dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+
+    <Button
+        android:id="@+id/addFriendButton"
+        android:layout_width="106dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="289dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="545dp"
+        android:text="Add Friend"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/friendListText"
+        android:layout_width="233dp"
+        android:layout_height="167dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginEnd="143dp"
+        android:layout_marginBottom="328dp"
+        android:text=" "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lookUpDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="352dp"
+        android:layout_marginBottom="648dp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/editProfileButton"
+        android:layout_width="108dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="287dp"
+        android:layout_marginTop="152dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="422dp"
+        android:text="Edit Profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Age"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="168dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

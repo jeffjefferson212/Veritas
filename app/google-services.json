@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1087864223783",
+    "firebase_url": "https://cisbook-90431.firebaseio.com",
+    "project_id": "cisbook-90431",
+    "storage_bucket": "cisbook-90431.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087864223783:android:f522c7d740ba3de8d23602",
+        "android_client_info": {
+          "package_name": "edu.cis.clientapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087864223783-ur10f16fi0tgklh0sdk6gk7efuahvl40.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzunYzdI7J8qkycxsRirBdUyAHfiGVeI8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087864223783-ur10f16fi0tgklh0sdk6gk7efuahvl40.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,6 @@
 package edu.cis.clientapp.Controller;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -14,6 +15,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.io.IOException;
@@ -30,6 +34,11 @@ public class CISbookClientActivity extends AppCompatActivity {
      */
     Button addButton;
     EditText textInput;
+    Button deleteButton;
+    Button lookUpButton;
+    ImageButton accountsButton;
+    Button addFriendButton;
+    TextView friendListText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +62,13 @@ public class CISbookClientActivity extends AppCompatActivity {
         System.out.println("about to ping!");
         pingTheServer();
         addButton = findViewById(R.id.addButton);
+        deleteButton = findViewById(R.id.deleteButton);
+        lookUpButton= findViewById(R.id.lookUpButton);
+        accountsButton= findViewById(R.id.accountsButton);
+        addFriendButton = findViewById(R.id.addFriendButton);
+        friendListText =findViewById(R.id.friendListText);
+        addFriendButton.setVisibility(View.GONE);
+
         setUpButtons();
     }
 
@@ -60,11 +76,39 @@ public class CISbookClientActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addProf(findViewById(R.id.textInput).toString());
-
+                EditText text =findViewById(R.id.textInput);
+                addProf(text.getText().toString());
 
             }
         });
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText text =findViewById(R.id.textInput);
+                deleteProf(text.getText().toString());
+            }
+        });
+        lookUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText text =findViewById(R.id.textInput);
+                lookup(text.getText().toString());
+            }
+        });
+        accountsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showHideAccounts();
+            }
+        });
+        addFriendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText text =findViewById(R.id.textInput);
+                addFriend(text.getText().toString());
+            }
+        });
+
 
 
     }
@@ -78,23 +122,179 @@ public class CISbookClientActivity extends AppCompatActivity {
             String result = SimpleClient.makeRequest(Constants.HOST, example);
             System.out.println("ping!");
             System.out.println(("result is: " + result));
+            String text = result;
+            //Toast code taken and adapted from: https://developer.android.com/guide/topics/ui/notifiers/toasts
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
 
+
     private void addProf(String name1) {
+        String result= "";
         try {
             Request addProfile = new Request("addProfile");
             addProfile.addParam("name", name1);
-            String result = SimpleClient.makeRequest(Constants.HOST, addProfile);
+            result = SimpleClient.makeRequest(Constants.HOST, addProfile);
             System.out.println("Add Profile!");
             System.out.println(("result is: " + result));
+            TextView textView = findViewById(R.id.textView);
+            textView.setText(name1);
+            EditText Edittext= findViewById(R.id.textInput);
+            Edittext.setText("");
+            if (result.equals("success")){
+                showHideAccounts();
+                addFriendButton.setVisibility(View.VISIBLE);
+
+            }
+
         } catch (IOException e) {
             System.out.println(e.getMessage());
+            result=e.getMessage();
+
         }
+        String text = result;
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
+    }
+
+    private void deleteProf(String name1) {
+        String result= "";
+        try {
+            Request deleteProfile = new Request("deleteProfile");
+            deleteProfile.addParam("name", name1);
+             result = SimpleClient.makeRequest(Constants.HOST, deleteProfile);
+            System.out.println("DeleteProfile!");
+            System.out.println(("result is: " + result));
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            result=e.getMessage();
+        }
+        TextView textView = findViewById(R.id.textView);
+        textView.setText(name1);
+        String text = result;
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
 
 
+
+    }
+    private void addFriend(String name1)
+    {
+        String result= "";
+        String name2="";
+
+        try {
+            TextView textView = findViewById(R.id.textView);
+
+            if (!textView.getText().equals("TextView")){
+                name2 =textView.getText().toString();
+            }
+            Request addFriend = new Request("addFriend");
+            addFriend.addParam("name1", name1);
+            addFriend.addParam("name2", name2);
+             result = SimpleClient.makeRequest(Constants.HOST, addFriend);
+        }
+        catch (IOException e){
+            result=e.getMessage();
+        }
+        String text = result;
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
+
+
+    }
+    private void getFriends(String name){
+        String result= "";
+        String text = "";
+
+        try {
+            Request getFriends = new Request("getFriends");
+            getFriends.addParam("name",name);
+            result = SimpleClient.makeRequest(Constants.HOST, getFriends);
+            TextView friendListText = findViewById(R.id.friendListText);
+            friendListText.setText("Friends"+ result);
+            text = "Success";
+            System.out.println(result);
+        }
+        catch (IOException e) {
+                System.out.println(e.getMessage());
+                result=e.getMessage();
+
+
+
+            }
+
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
+    }
+
+
+
+
+    private void lookup(String name1) {
+        String result= "";
+        try {
+            Request containsProfile = new Request("containsProfile");
+            containsProfile.addParam("name", name1);
+            result = SimpleClient.makeRequest(Constants.HOST, containsProfile);
+            System.out.println("Contains Profile!");
+            System.out.println(("result is: " + result));
+
+            TextView textView = findViewById(R.id.lookUpDisplay);
+            if (result.equals("true")) {
+                result = "Displaying "+ name1;
+                textView.setText(result);
+                getFriends(name1);
+            }
+            else {
+                result = "A profile with the name " + name1 + " does not exist";
+                textView.setText(result);
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            result=e.getMessage();
+
+        }
+        String text = result;
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
+    private void showHideAccounts(){
+        if(addButton.getVisibility()==View.VISIBLE)
+        {
+        addButton.setVisibility(View.GONE);
+        }
+        else if(addButton.getVisibility()==View.GONE)
+        {
+            addButton.setVisibility(View.VISIBLE);
+        }
+        if(deleteButton.getVisibility()==View.VISIBLE)
+        {
+            deleteButton.setVisibility(View.GONE);
+        }
+        else if(deleteButton.getVisibility()==View.GONE)
+        {
+            deleteButton.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
