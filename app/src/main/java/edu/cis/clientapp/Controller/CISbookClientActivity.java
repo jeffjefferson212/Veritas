@@ -356,31 +356,7 @@ public class CISbookClientActivity extends AppCompatActivity {
         toast.show();
 
     }
-    private void saveProfile(){
-        String text = "Profile saved";
 
-
-
-
-
-            TextView accountName = findViewById(R.id.accountName);
-            String name=accountName.toString();
-            TextView age=findViewById(R.id.ageDisplay);
-            String age2=age.getText().toString();
-            TextView gender=findViewById(R.id.genderDisplay);
-            String gender2=gender.getText().toString();
-            if (setAge(name,age2)&& setGender(name,gender2)){
-                Context context = getApplicationContext();
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-                showHideEditProfile();
-
-            }
-
-
-
-        }
 
 
 
@@ -434,7 +410,32 @@ public class CISbookClientActivity extends AppCompatActivity {
         String name2=name.getText().toString();
         age.setText(getAge(name2));
         gender.setText(getGender(name2));
-        showHideEditProfile();
+        ageTag.setVisibility(View.VISIBLE);
+        genderTag.setVisibility(View.VISIBLE);
+        ageDisplay.setVisibility(View.VISIBLE);
+        genderDisplay.setVisibility(View.VISIBLE);
+        saveProfileButton.setVisibility(View.VISIBLE);
+    }
+    private void saveProfile(){
+        String text = "Profile saved";
+        TextView accountName = findViewById(R.id.accountName);
+        String name=accountName.getText().toString();
+        TextView age=findViewById(R.id.ageDisplay);
+        String age2=age.getText().toString();
+        TextView gender=findViewById(R.id.genderDisplay);
+        String gender2=gender.getText().toString();
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            showHideEditProfile();
+        friendsTag.setVisibility(View.GONE);
+
+
+
+
+
+
     }
     private void showHideAccounts(){
         if(addButton.getVisibility()==View.VISIBLE)
