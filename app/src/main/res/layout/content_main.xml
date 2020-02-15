@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/accountName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
@@ -116,25 +116,28 @@
 
     <TextView
         android:id="@+id/friendListText"
-        android:layout_width="233dp"
-        android:layout_height="167dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="180dp"
-        android:layout_marginEnd="143dp"
-        android:layout_marginBottom="328dp"
+        android:layout_width="161dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="162dp"
+        android:layout_marginEnd="133dp"
+        android:layout_marginBottom="457dp"
         android:text=" "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4" />
 
     <TextView
         android:id="@+id/lookUpDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="352dp"
-        android:layout_marginBottom="648dp"
+        android:layout_width="132dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="270dp"
+        android:layout_marginBottom="614dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -155,15 +158,93 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editText"
+    <TextView
+        android:id="@+id/friendsTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="181dp"
+        android:layout_marginEnd="348dp"
+        android:layout_marginBottom="475dp"
+        android:text="Friends"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ageTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="239dp"
+        android:layout_marginEnd="370dp"
+        android:layout_marginBottom="417dp"
+        android:text="Age"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/genderTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="297dp"
+        android:layout_marginEnd="349dp"
+        android:layout_marginBottom="359dp"
+        android:text="Gender"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ageDisplay"
+        android:layout_width="61dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="228dp"
+        android:layout_marginEnd="270dp"
+        android:layout_marginBottom="409dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Age"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="168dp" />
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/genderDisplay"
+        android:layout_width="61dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="290dp"
+        android:layout_marginEnd="270dp"
+        android:layout_marginBottom="347dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/saveProfileButton"
+        android:layout_width="143dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="346dp"
+        android:layout_marginEnd="263dp"
+        android:layout_marginBottom="283dp"
+        android:text="Save Changes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
