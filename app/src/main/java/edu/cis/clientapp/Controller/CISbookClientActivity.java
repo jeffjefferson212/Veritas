@@ -424,6 +424,8 @@ public class CISbookClientActivity extends AppCompatActivity {
         String age2=age.getText().toString();
         TextView gender=findViewById(R.id.genderDisplay);
         String gender2=gender.getText().toString();
+        setAge(name,age2);
+        setGender(name,gender2);
             Context context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
