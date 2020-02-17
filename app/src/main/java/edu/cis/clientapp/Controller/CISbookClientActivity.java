@@ -244,7 +244,7 @@ public class CISbookClientActivity extends AppCompatActivity {
             TextView textView = findViewById(R.id.accountName);
 
 
-            Request setAge= new Request("addFriend");
+            Request setAge= new Request("setAge");
             setAge.addParam("age", age);
             setAge.addParam("name", name);
             result = SimpleClient.makeRequest(Constants.HOST, setAge);
@@ -381,7 +381,7 @@ public class CISbookClientActivity extends AppCompatActivity {
 
                 EditText age = findViewById(R.id.ageDisplay);
                 EditText gender = findViewById(R.id.genderDisplay);
-                age.setText(getGender(name1));
+                age.setText(getAge(name1));
                 gender.setText(getGender(name1));
                 showHideEditProfile();
                 saveProfileButton.setVisibility(View.GONE);
@@ -424,6 +424,7 @@ public class CISbookClientActivity extends AppCompatActivity {
         String age2=age.getText().toString();
         TextView gender=findViewById(R.id.genderDisplay);
         String gender2=gender.getText().toString();
+
         setAge(name,age2);
         setGender(name,gender2);
             Context context = getApplicationContext();
