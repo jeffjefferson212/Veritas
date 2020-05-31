@@ -121,22 +121,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/discoverforward"
         android:layout_width="40dp"
         android:layout_height="50dp"
-        android:background="@drawable/backarrow"
+        android:layout_marginStart="370dp"
+        android:layout_marginTop="107dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="574dp"
+        android:background="@drawable/forwardarrow"
         android:text=""
-        tools:layout_editor_absoluteX="370dp"
-        tools:layout_editor_absoluteY="107dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/discoverback"
-        android:layout_width="40dp"
-        android:layout_height="50dp"
-        android:background="@drawable/backarrow"
+        android:layout_width="44dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="367dp"
+        android:layout_marginBottom="566dp"
+        android:background="@drawable/backwardarrow"
         android:text=""
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="107dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
@@ -149,6 +160,21 @@
         android:layout_marginBottom="574dp"
         android:gravity="center"
         android:text="Website"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="25dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="149dp"
+        android:layout_marginTop="527dp"
+        android:layout_marginEnd="237dp"
+        android:layout_marginBottom="176dp"
+        android:background="@android:color/holo_blue_light"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
