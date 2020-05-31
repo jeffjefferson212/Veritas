@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/accountName"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="671dp"
+        android:background="@drawable/topbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/homebuttonScan"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="98dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="297dp"
+        android:layout_marginBottom="679dp"
+        android:background="@android:color/white"
+        android:text="Home"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/shoesButtonScan"
+        android:layout_width="98dp"
+        android:layout_height="46dp"
+
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="182dp"
+        android:layout_marginBottom="679dp"
+        android:background="@android:color/white"
+        android:stateListAnimator="@null"
+        android:text="shoes"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ScanscanButton"
+        android:layout_width="98dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="246dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginBottom="679dp"
+        android:background="@android:color/white"
+        android:stateListAnimator="@null"
+        android:text="Scan"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/accountsButton"
+        android:layout_width="52dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="358dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="676dp"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+
+    <EditText
+        android:id="@+id/siginput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="141dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="545dp"
+        android:ems="10"
+
+        android:password="true"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Deprecated" />
+
+    <EditText
+        android:id="@+id/adminpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="114dp"
+        android:layout_marginTop="242dp"
+        android:layout_marginEnd="87dp"
+        android:layout_marginBottom="444dp"
+        android:ems="10"
+        android:hint="password"
+        android:inputType="textPassword"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/randomNumberDisplay"
+        android:layout_width="132dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="139dp"
+        android:layout_marginTop="83dp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginBottom="629dp"
+        android:gravity="center"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/testerFake"
+        android:layout_width="116dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="385dp"
+        android:layout_marginEnd="279dp"
+        android:layout_marginBottom="261dp"
+        android:text="Fake"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/testerReal"
+        android:layout_width="116dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="279dp"
+        android:layout_marginTop="386dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="260dp"
+        android:text="Real"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/VerifiedImage"
+        android:layout_width="299dp"
+        android:layout_height="299dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="171dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="261dp"
+        android:tint="@android:color/holo_blue_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/verified" />
+
+    <ImageView
+        android:id="@+id/FakeImage"
+        android:layout_width="299dp"
+        android:layout_height="299dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="171dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="261dp"
+        android:background="@android:drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/verified" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

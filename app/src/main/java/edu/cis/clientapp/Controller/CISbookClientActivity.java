@@ -1,19 +1,23 @@
 package edu.cis.clientapp.Controller;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Handler;
 import android.os.StrictMode;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,27 +37,52 @@ import edu.cis.clientapp.Model.SimpleClient;
 import edu.cis.clientapp.R;
 
 public class CISbookClientActivity extends AppCompatActivity {
+    private static  int SPLASHSCREENTIMER=5000;
     /**
      * The address of the server that should be contacted when sending
      * any Requests.
      */
-    Button addButton;
 
-    Button deleteButton;
-
-    ImageButton accountsButton;
-    Button saveProfileButton;
-    Button editProfileButton;
+        //Home page buttons
     WebView webView;
+    Button scanButtonHome;
     Button shoesTabButton;
-    Button returnHomeX;
 
+    //Login page buttons
+    Button returnHomeX;
+    //scan page buttons
+    Button testFake;
+    Button testReal;
+    TextView randoNum;
+    EditText sigInput;
+    EditText adminPassword;
+    ImageView verifiedTick;
+    ImageView FakeX;
+    Button returnHomeXScan;
+    Button shoesScan;
+    //Splash screen
+    ImageView topimage;
+    ImageView bottomImage;
+    Animation topAnim;
+    Animation bottomAnim;
 
     @Override
+    // splash screen code adapted from https://www.youtube.com/watch?v=JLIFqqnSNmg
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.splashscreen);
+        setupAnim();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+
+                setContentView(R.layout.content_main);
+                setUpHomepage();
+
+            }
+        },SPLASHSCREENTIMER);
 
 
 
@@ -64,34 +93,120 @@ public class CISbookClientActivity extends AppCompatActivity {
 
 
         System.out.println("about to ping!");
-        // pingTheServer();
-        addButton = findViewById(R.id.addButton);
-        deleteButton = findViewById(R.id.deleteButton);
-        accountsButton = findViewById(R.id.accountsButton);
-        editProfileButton = findViewById(R.id.editProfileButton);
-        shoesTabButton = findViewById(R.id.shoesButton);
-        webView=findViewById(R.id.webView);
-        webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://sneakernews.com/");
+         pingTheServer();
 
-        setUpButtons();
+
+
+
+
+
+
          // showHideEditProfile();
     }
 
-
+    private void setupAnim(){
+        topAnim = AnimationUtils.loadAnimation(this,R.anim.top_animation);
+        topAnim = AnimationUtils.loadAnimation(this,R.anim.bottom_animantion);
+        topimage = findViewById(R.id.splashtop);
+        bottomImage=findViewById(R.id.splashbottom);
+        topimage.setAnimation(topAnim);
+        bottomImage.setAnimation(bottomAnim);
+    }
     private void setupLogin()
     {
-        returnHomeX= findViewById(R.id.returnHomeXButton);
+        returnHomeX = findViewById(R.id.returnHomeXButton);
+
         returnHomeX.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setContentView(R.layout.activity_main);
+                setUpHomepage();
             }
         });
     }
-    private void setUpButtons()
+    private void setupScan()
     {
+    randoNum = findViewById(R.id.randomNumberDisplay);
+    sigInput = findViewById(R.id.siginput);
+    adminPassword = findViewById(R.id.adminpassword);
+    testFake = findViewById(R.id.testerFake);
+    shoesScan=findViewById(R.id.shoesButtonScan);
+    returnHomeXScan = findViewById(R.id.homebuttonScan);
+    testReal = findViewById(R.id.testerReal);
+    verifiedTick = findViewById(R.id.VerifiedImage);
+    FakeX = findViewById(R.id.FakeImage);
+    scanClicks();
+    scanHideShowAdmin();
+        verifiedTick.setVisibility(View.GONE);
+        FakeX.setVisibility(View.GONE);
 
+    }
+
+    private void scanHideShowAdmin()
+    {
+        if (adminPassword.getVisibility()== View.VISIBLE){
+            adminPassword.setVisibility(View.GONE);
+        }
+        else
+            {
+                adminPassword.setVisibility(View.VISIBLE);
+            }
+
+        if (testFake.getVisibility()== View.VISIBLE){
+            testFake.setVisibility(View.GONE);
+        }
+        else
+        {
+            testFake.setVisibility(View.VISIBLE);
+        }
+
+        if (testReal.getVisibility()== View.VISIBLE){
+            testReal.setVisibility(View.GONE);
+        }
+        else
+        {
+            testReal.setVisibility(View.VISIBLE);
+        }
+    }
+    private void scanClicks()
+    {
+        testFake.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        testReal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        shoesScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setContentView(R.layout.login);
+                setupLogin();
+            }
+        });
+        returnHomeXScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setContentView(R.layout.activity_main);
+                setUpHomepage();
+            }
+        });
+
+    }
+
+    private void setUpHomepage() {
+
+
+        shoesTabButton = findViewById(R.id.shoesButton);
+        webView=findViewById(R.id.webView);
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("https://sneakernews.com/");
+        scanButtonHome = findViewById(R.id.scanButton);
         shoesTabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,27 +215,16 @@ public class CISbookClientActivity extends AppCompatActivity {
 
             }
         });
-
-        addButton.setOnClickListener(new View.OnClickListener() {
+        scanButtonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                setContentView(R.layout.scan);
+                setupScan();
 
             }
         });
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-
-
-        });
-
 
     }
-
 
 
     private void pingTheServer() {
@@ -183,83 +287,31 @@ public class CISbookClientActivity extends AppCompatActivity {
         return fact.generatePublic(spec);
 
     }
-    private boolean verifySigMessage (String signedMessage, String serialNum) throws GeneralSecurityException, IOException {
-        char[] Array =signedMessage.toCharArray();
+    private boolean verifySigMessage (byte[] signature, String message,String serialNum) throws GeneralSecurityException, IOException {
+        char[] Array =message.toCharArray();
 
 
 
         Signature sig2 = Signature.getInstance("SHA256withRSA");
         PublicKey publickey = loadPublicKey(getpublickey(serialNum));
-        String message = signedMessage;
+
         sig2.initVerify(publickey);
         for (char c : message.toCharArray())
         {
             byte b = (byte) c;
             sig2.update(b);
         }
-       // boolean valid = sig2.verify(messageSignature);
-    //    System.out.println("valid? " + valid);
+
+       boolean valid = sig2.verify(signature);
+        System.out.println("valid? " + valid);
+        if (valid)
+        {
+            return true;
+        }
         return false;
     }
 
 
-    private void addProf(String name1) {
-        String result= "";
-        try {
-            Request addProfile = new Request("addProfile");
-            addProfile.addParam("name", name1);
-            result = SimpleClient.makeRequest(Constants.HOST, addProfile);
-            System.out.println("Add Profile!");
-            System.out.println(("result is: " + result));
-            TextView textView = findViewById(R.id.accountName);
-            textView.setText(name1);
-
-
-            if (result.equals("success")){
-                showHideAccounts();
-
-
-            }
-
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            result=e.getMessage();
-
-        }
-        String text = result;
-        Context context = getApplicationContext();
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-
-    }
-
-    private void deleteProf(String name1)
-    {
-        String result= "";
-        try {
-            Request deleteProfile = new Request("deleteProfile");
-            deleteProfile.addParam("name", name1);
-             result = SimpleClient.makeRequest(Constants.HOST, deleteProfile);
-            System.out.println("DeleteProfile!");
-            System.out.println(("result is: " + result));
-
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            result=e.getMessage();
-        }
-        TextView textView = findViewById(R.id.accountName);
-        textView.setText(name1);
-        String text = result;
-        Context context = getApplicationContext();
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-
-
-
-
-    }
 
 
 
@@ -271,48 +323,11 @@ public class CISbookClientActivity extends AppCompatActivity {
 
 
 
-    private void showHideAccounts(){
-        if(addButton.getVisibility()==View.VISIBLE)
-        {
-        addButton.setVisibility(View.GONE);
-        }
-        else if(addButton.getVisibility()==View.GONE)
-        {
-            addButton.setVisibility(View.VISIBLE);
-        }
-        if(deleteButton.getVisibility()==View.VISIBLE)
-        {
-            deleteButton.setVisibility(View.GONE);
-        }
-        else if(deleteButton.getVisibility()==View.GONE)
-        {
-            deleteButton.setVisibility(View.VISIBLE);
-        }
-        if(editProfileButton.getVisibility()==View.VISIBLE)
-        {
-            editProfileButton.setVisibility(View.GONE);
-        }
-        else if(editProfileButton.getVisibility()==View.GONE)
-        {
-            editProfileButton.setVisibility(View.VISIBLE);
-        }
-    }
-    private void showHideEditProfile()
-
-    {
-
-        if(saveProfileButton.getVisibility()==View.VISIBLE)
-        {
-            saveProfileButton.setVisibility(View.GONE);
-        }
-        else if(saveProfileButton.getVisibility()==View.GONE)
-        {
-            saveProfileButton.setVisibility(View.VISIBLE);
-        }
 
 
 
-    }
+
+
 
 
 

@@ -32,6 +32,7 @@
         android:background="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
@@ -57,8 +58,8 @@
         android:id="@+id/shoesButton"
         android:layout_width="98dp"
         android:layout_height="46dp"
-        android:layout_marginStart="131dp"
 
+        android:layout_marginStart="131dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="182dp"
         android:layout_marginBottom="679dp"
@@ -77,14 +78,12 @@
         android:layout_height="46dp"
         android:layout_marginStart="246dp"
         android:layout_marginTop="6dp"
-        android:layout_marginEnd="67dp"
         android:layout_marginBottom="679dp"
         android:background="@android:color/white"
         android:stateListAnimator="@null"
         android:text="Scan"
         android:textColor="@android:color/holo_red_dark"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -93,26 +92,13 @@
         android:id="@+id/webView"
         android:layout_width="410dp"
         android:layout_height="370dp"
-        android:layout_marginTop="158dp"
-        android:layout_marginBottom="240dp"
+        android:layout_marginTop="157dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="204dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:id="@+id/addButton"
-            android:layout_width="109dp"
-            android:layout_height="95dp"
-            android:layout_mainStart="289dp"
-            android:layout_marginTop="280dp"
-            android:layout_marginEnd="13dp"
-            android:layout_marginBottom="300dp"
-            android:layout_x="142dp"
-
-            android:layout_y="168dp"
-            android:text="Add" />
-    </WebView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -136,14 +122,33 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="66dp"
-        android:layout_height="83dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="345dp"
-        android:layout_marginBottom="593dp"
-        android:background="@drawable/BackArrow"
-        android:stateListAnimator="@null"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:background="@drawable/backarrow"
         android:text=""
+        tools:layout_editor_absoluteX="370dp"
+        tools:layout_editor_absoluteY="107dp" />
+
+    <Button
+        android:id="@+id/discoverback"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:background="@drawable/backarrow"
+        android:text=""
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="107dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="99dp"
+
+        android:layout_height="18dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="139dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginBottom="574dp"
+        android:gravity="center"
+        android:text="Website"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
