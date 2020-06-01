@@ -89,7 +89,7 @@
 
 
     <WebView
-        android:id="@+id/webView"
+        android:id="@+id/webView1"
         android:layout_width="410dp"
         android:layout_height="370dp"
         android:layout_marginTop="157dp"
@@ -97,8 +97,41 @@
         android:layout_marginBottom="204dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"/>
+
+        <WebView
+            android:id="@+id/webView2"
+            android:layout_width="410dp"
+            android:layout_height="370dp"
+            android:layout_marginTop="157dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="204dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"/>
+
+            <WebView
+                android:id="@+id/webView3"
+                android:layout_width="410dp"
+                android:layout_height="370dp"
+                android:layout_marginTop="157dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="204dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+
+
 
     <TextView
         android:id="@+id/textView"
@@ -166,19 +199,35 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button5"
-        android:layout_width="25dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="149dp"
-        android:layout_marginTop="527dp"
-        android:layout_marginEnd="237dp"
-        android:layout_marginBottom="176dp"
-        android:background="@android:color/holo_blue_light"
+        android:id="@+id/homeDot1"
+        android:layout_width="9dp"
+        android:layout_height="9dp"
+        android:layout_marginStart="173dp"
+        android:layout_marginTop="539dp"
+        android:layout_marginEnd="229dp"
+        android:layout_marginBottom="183dp"
+        android:background="@drawable/dot"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/homeDot2"
+        android:layout_width="9dp"
+        android:layout_height="9dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="539dp"
+        android:layout_marginEnd="201dp"
+        android:layout_marginBottom="183dp"
+        android:background="@drawable/dot"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package edu.cis.clientapp.Controller;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +29,7 @@ import java.security.KeyFactory;
 import java.security.PublicKey;
 import java.security.Signature;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.Arrays;
 import java.util.Base64;
 
 import edu.cis.clientapp.Model.Constants;
@@ -36,6 +38,8 @@ import edu.cis.clientapp.Model.SimpleClient;
 import edu.cis.clientapp.R;
 
 public class CISbookClientActivity extends AppCompatActivity {
+    private  String [] webviewsites;
+    private int websitenumber;
     private static int SPLASHSCREENTIMER = 5000;
     /**
      * The address of the server that should be contacted when sending
@@ -43,14 +47,20 @@ public class CISbookClientActivity extends AppCompatActivity {
      */
 
     //Home page buttons
-    WebView webView;
+    WebView webView1;
+    WebView webView2;
+    WebView webView3;
     Button scanButtonHome;
     Button shoesTabButton;
+    Button dot1;
+    Button dot2;
+    Button dot3;
 
     //Login page buttons
     Button returnHomeX;
     //scan page buttons
     Button generateRandom;
+
     EditText serialNumberInput;
     Button verify;
     Button testFake;
@@ -212,8 +222,8 @@ public class CISbookClientActivity extends AppCompatActivity {
         testReal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // String randomNumber =randoNum.getText().toString();
-                String randomNumber ="ronaldmcdonald";
+                String randomNumber =randoNum.getText().toString();
+
                 String serialNumber = serialNumberInput.getText().toString();
 
                 String serialtag= splitSerialTag(serialNumber);
@@ -263,14 +273,30 @@ public class CISbookClientActivity extends AppCompatActivity {
         });
 
     }
+    private void homepageWebveiew()
+    {
 
+    }
+    private void animate(final WebView view) {
+        Animation anim = AnimationUtils.loadAnimation(getBaseContext(),
+                android.R.anim.slide_in_left);
+        view.startAnimation(anim);
+    }
     private void setUpHomepage() {
 
-
+        dot1 = findViewById(R.id.homeDot1);
+        dot2 = findViewById(R.id.homeDot2);
+        dot3 = findViewById(R.id.homeDot3);
         shoesTabButton = findViewById(R.id.shoesButton);
-        webView = findViewById(R.id.webView);
-        webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://sneakernews.com/");
+        webView1 = findViewById(R.id.webView1);
+        webView2 = findViewById(R.id.webView2);
+        webView3 = findViewById(R.id.webView3);
+        webView1.setWebViewClient(new WebViewClient());
+        webView1.loadUrl("https://sneakernews.com/");
+        webView2.loadUrl("https://www.grailed.com/categories/sneakers");
+        webView3.loadUrl("https://stockx.com/");
+        webView3.setVisibility(View.GONE);
+        webView2.setVisibility(View.GONE);
         scanButtonHome = findViewById(R.id.scanButton);
         shoesTabButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -288,8 +314,41 @@ public class CISbookClientActivity extends AppCompatActivity {
 
             }
         });
+        dot1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webView1.setVisibility(View.VISIBLE);
+                webView2.setVisibility(View.GONE);
+                webView3.setVisibility(View.GONE);
+
+
+
+
+
+            }
+        });
+        dot2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webView2.setVisibility(View.VISIBLE);
+                webView1.setVisibility(View.GONE);
+                webView3.setVisibility(View.GONE);
+
+            }
+        });
+        dot3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webView3.setVisibility(View.VISIBLE);
+                webView2.setVisibility(View.GONE);
+                webView1.setVisibility(View.GONE);
+
+
+            }
+        });
 
     }
+
 
 
     private void pingTheServer() {
@@ -341,12 +400,13 @@ public class CISbookClientActivity extends AppCompatActivity {
 
             // Lets prepare ourselves a new request with command "ping".
             Request getPublicKey = new Request("getPublicKey");
-            getPublicKey.addParam("serialtag", serialtag);
-            getPublicKey.addParam("serialnum", num);
+            getPublicKey.addParam("serialTag", serialtag);
+            getPublicKey.addParam("serialNum", num);
             // We are ready to send our request
             String result = SimpleClient.makeRequest(Constants.HOST, getPublicKey);
-
             System.out.println(("result is: " + result));
+
+
             String text = "public key received";
             //Toast code taken and adapted from: https://developer.android.com/guide/topics/ui/notifiers/toasts
             Context context = getApplicationContext();
@@ -362,9 +422,18 @@ public class CISbookClientActivity extends AppCompatActivity {
     }
 
     //Check replaced Key with public key line 155
-    public static PublicKey loadPublicKey(String stored) throws GeneralSecurityException, IOException {
-        byte[] data = Base64.getDecoder().decode((stored.getBytes()));
-        X509EncodedKeySpec spec = new X509EncodedKeySpec(data);
+    public static PublicKey loadPublicKey(String result) throws GeneralSecurityException, IOException {
+        byte[] array = new byte[result.length() / 2];
+        for (int i = 0; i < array.length; i++) {
+            Byte b =  Byte.parseByte(result.substring(2 * i, 2 * i + 1), 16);
+            b=(byte)(b *16);
+            array[i] = (byte)(b+Byte.parseByte(result.substring(2 * i + 1, 2 * i + 2), 16));
+        }
+        System.out.println("*******ByteArray****");
+        System.out.println(Arrays.toString(array));
+
+ //       byte[] data = Base64.getDecoder().decode(array);
+        X509EncodedKeySpec spec = new X509EncodedKeySpec(array);
         KeyFactory fact = KeyFactory.getInstance("RSA");
         return fact.generatePublic(spec);
 
@@ -374,13 +443,15 @@ public class CISbookClientActivity extends AppCompatActivity {
         char[] Array = message.toCharArray();
 
 
+
         Signature sig2 = Signature.getInstance("SHA256withRSA");
+
         System.out.println("==========================");
         System.out.println(getpublickey(serialNum));
         System.out.println("==========================");
-
         PublicKey publickey = loadPublicKey(getpublickey(serialNum));
-
+        System.out.println("Publickey%%%%%:");
+        System.out.println(publickey);
         sig2.initVerify(publickey);
         for (char c : message.toCharArray()) {
             byte b = (byte) c;
@@ -394,7 +465,19 @@ public class CISbookClientActivity extends AppCompatActivity {
         }
         return false;
     }
-
+// public boolean verify (String serialNumber,String serialtag, String Message , String Signature)
+// {
+//     Request verify = new Request("verify");
+//     verify.addParam("serialTag", serialtag);
+//     verify.addParam("serialNum", serialNumber);
+//     verify.addParam("signednumber", serialNumber);
+//     // We are ready to send our request
+//     String result = SimpleClient.makeRequest(Constants.HOST, verify();
+//     System.out.println(("result is: " + result));
+//
+//        return false;
+//
+// }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
